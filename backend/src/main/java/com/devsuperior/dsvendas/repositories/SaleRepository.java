@@ -5,8 +5,11 @@
  */
 package com.devsuperior.dsvendas.repositories;
 
+import com.devsuperior.dsvendas.dtos.SaleSumDTO;
 import com.devsuperior.dsvendas.entities.Sale;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,5 +18,13 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SaleRepository extends JpaRepository<Sale, Long>{
+    
+    
+    @Query("")
+    List<SaleSumDTO> aountGroupedByBySeller();
+    
+    
+    
+    
     
 }
