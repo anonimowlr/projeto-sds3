@@ -1,25 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactApexChart  from "react-apexcharts";
+import Dados  from  '../../dados/Dados';
+import axios from "axios"
 
 
 const DonutsChart = () => {
 
-    const mockData = {
-        series: [477138, 499928, 444867, 220426, 473088],
-        labels: ['Anakin', 'Barry Allen', 'Kal-El', 'Logan', 'Padmé']
-    }
+   
     
-    const options = {
-        legend: {
-            show: true
-        }
-    }
-
 
     return(
 
         <ReactApexChart  
-        options={{...options,labels:mockData.labels}} series={mockData.series} type="donut" height={350}></ReactApexChart >
+        options={{...Dados,labels:Dados.labels}} series={Dados.series} type="donut" height={350}></ReactApexChart >
 
 
 
