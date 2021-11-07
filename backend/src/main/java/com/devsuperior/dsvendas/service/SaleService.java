@@ -6,8 +6,11 @@
 package com.devsuperior.dsvendas.service;
 
 import com.devsuperior.dsvendas.dtos.SaleDTO;
+import com.devsuperior.dsvendas.dtos.SaleSucessDTO;
+import com.devsuperior.dsvendas.dtos.SaleSumDTO;
 import com.devsuperior.dsvendas.repositories.SaleRepository;
 import com.devsuperior.dsvendas.repositories.SellerRepository;
+import java.util.List;
  import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,6 +40,16 @@ public class SaleService {
         return  listaSaleDTO;
     }
     
+    @Transactional(readOnly = true)
+    public List<SaleSumDTO> amountGroupedByBySeller(){
+        
+        return saleRepository.amountGroupedByBySeller();
+        
+    }
+
+    public List<SaleSucessDTO> successGroupedByBySeller() {
+      return saleRepository.successGroupedByBySeller();
+    }
     
     
     

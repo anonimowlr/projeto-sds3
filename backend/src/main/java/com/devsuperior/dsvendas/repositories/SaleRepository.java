@@ -5,6 +5,7 @@
  */
 package com.devsuperior.dsvendas.repositories;
 
+import com.devsuperior.dsvendas.dtos.SaleSucessDTO;
 import com.devsuperior.dsvendas.dtos.SaleSumDTO;
 import com.devsuperior.dsvendas.entities.Sale;
 import java.util.List;
@@ -20,8 +21,13 @@ import org.springframework.stereotype.Repository;
 public interface SaleRepository extends JpaRepository<Sale, Long>{
     
     
-    @Query("")
-    List<SaleSumDTO> aountGroupedByBySeller();
+    @Query("SELECT new  com.devsuperior.dsvendas.dtos.SaleSumDTO(obj.seller,SUM(obj.amount)) "
+            + " FROM Sale as obj GROUP BY obj.seller")
+    List<SaleSumDTO> amountGroupedByBySeller();
+    
+    @Query("SELECT new  com.devsuperior.dsvendas.dtos.SaleSucessDTO(obj.seller,SUM(obj.visited),SUM(obj.deals)) "
+            + " FROM Sale as obj GROUP BY obj.seller")
+    List<SaleSucessDTO> successGroupedByBySeller();
     
     
     

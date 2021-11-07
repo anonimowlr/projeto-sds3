@@ -6,6 +6,8 @@
 package com.devsuperior.dsvendas.controllers;
 
 import com.devsuperior.dsvendas.dtos.SaleDTO;
+import com.devsuperior.dsvendas.dtos.SaleSucessDTO;
+import com.devsuperior.dsvendas.dtos.SaleSumDTO;
 import com.devsuperior.dsvendas.dtos.SellerDTO;
 import com.devsuperior.dsvendas.entities.Seller;
 import com.devsuperior.dsvendas.service.SaleService;
@@ -45,5 +47,27 @@ public class SaleController {
       
         
     }
+    
+   @GetMapping("sum-by-seller")
+    public ResponseEntity<List<SaleSumDTO>> amountGroupedBySeller(){
+        
+       List<SaleSumDTO> listaSaleSumDto = saleService.amountGroupedByBySeller();
+     
+       
+       return ResponseEntity.ok().body(listaSaleSumDto);
+       
+    }
+    
+    
+    @GetMapping("success-by-seller")
+    public ResponseEntity<List<SaleSucessDTO>> successGroupedBySeller(){
+        
+       List<SaleSucessDTO> listaSaleSuccessDto = saleService.successGroupedByBySeller();
+     
+       
+       return ResponseEntity.ok().body(listaSaleSuccessDto);
+       
+    }
+        
     
 }
